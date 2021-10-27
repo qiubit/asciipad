@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -23,10 +24,12 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          <a href="/playground" className={styles.card}>
-            <h2>Playground &rarr;</h2>
-            <p>Play with your Next.js and do NOT be afraid to blow some things.</p>
-          </a>
+          <Link href="/playground">
+            <a className={styles.card}>
+              <h2>Playground &rarr;</h2>
+              <p>Play with your Next.js and do NOT be afraid to blow some things.</p>
+            </a>
+          </Link>
 
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>

@@ -16,15 +16,16 @@ const Circle = () => {
     if (context == null) {
       return;
     }
-    context.beginPath();
-    context.arc(50, 50, 50, 0, 2 * Math.PI);
-    context.fill();
+    context.fillStyle = "#FF0000";
+    context.fillRect(25, 25, 50, 50);
   });
 
   return (
     <canvas
       ref={ref} 
-      style={{ width: '200px', height: '100px' }}
+      style={{ backgroundColor: 'darkcyan' }}
+      width={100}
+      height={100}
     />
   );
 };

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const FileUpload = () => {
   let [promptText, setPromptText] = useState<string>("Drag a file...")
-  let [videoFile, setVideoFile] = useState<string | null>(null);
+  let [videoFile, setVideoFile] = useState<string | null>("/ruler.mov");
   let [textOffsetX, setTextOffsetX] = useState<number>(0);
 
   return (
@@ -14,6 +14,7 @@ const FileUpload = () => {
         value={textOffsetX}
         onChange={evt => setTextOffsetX(parseInt(evt.target.value, 10) ?? 0)}
       />
+      <p>xOffset: {textOffsetX}</p>
       <h1
         onDragEnter={(e) => {
           e.preventDefault()
@@ -42,7 +43,7 @@ const FileUpload = () => {
       </h1>
       <div style={{ position: 'relative' }}>
         {videoFile != null ? (
-          <video controls={false} width={640} height={360}>
+          <video controls={false} width={1066} height={503}>
             <source src={videoFile} />
           </video>
         ): null}

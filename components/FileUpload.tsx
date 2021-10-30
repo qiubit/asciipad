@@ -3,9 +3,17 @@ import { useState } from 'react';
 const FileUpload = () => {
   let [promptText, setPromptText] = useState<string>("Drag a file...")
   let [videoFile, setVideoFile] = useState<string | null>(null);
+  let [textOffsetX, setTextOffsetX] = useState<number>(0);
 
   return (
     <div>
+      <input
+        type="range"
+        min="0"
+        max="200"
+        value={textOffsetX}
+        onChange={evt => setTextOffsetX(parseInt(evt.target.value, 10) ?? 0)}
+      />
       <h1
         onDragEnter={(e) => {
           e.preventDefault()
@@ -32,11 +40,29 @@ const FileUpload = () => {
       >
         {promptText}
       </h1>
-      {videoFile != null ? (
-        <video controls={true} width={640} height={360}>
-          <source src={videoFile} />
-        </video>
-      ): null}
+      <div style={{ position: 'relative' }}>
+        {videoFile != null ? (
+          <video controls={false} width={640} height={360}>
+            <source src={videoFile} />
+          </video>
+        ): null}
+        <p
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: textOffsetX,
+            right: 0,
+            bottom: 0,
+            padding: 0,
+            margin: 0,
+            fontFamily: "Anton, sans-serif",
+            fontSize: 64,
+            color: "#09ffd3"
+          }}
+        >
+          TEST
+        </p>
+      </div>
     </div>
   )
 }

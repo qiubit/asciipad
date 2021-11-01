@@ -11,6 +11,9 @@ const Playground: NextPage = () => {
       <div>
         <Link href="playground/canvas">canvas</Link>
       </div>
+      <div>
+        <Link href="playground/textvid">textvid</Link>
+      </div>
     </div>
   );
 }

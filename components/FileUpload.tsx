@@ -1,12 +1,30 @@
 import { useState } from 'react';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ProgressBar from 'react-bootstrap/ProgressBar';
+import { useEffect } from 'react';
+
 const FileUpload = () => {
   let [promptText, setPromptText] = useState<string>("Drag a file...")
   let [videoFile, setVideoFile] = useState<string | null>("/ruler.mov");
   let [textOffsetX, setTextOffsetX] = useState<number>(0);
+  let [progress, setProgress] = useState<number>(0);
+  let [mockUpload, setMockUpload] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!mockUpload) {
+      return
+    }
+    if (progress != 100) {
+      setTimeout(() => setProgress(progress+10), 500);
+    } else {
+      setMockUpload(false);
+    }
+  }, [mockUpload, progress])
 
   return (
     <div>
+      <ProgressBar animated now={progress} label={`${progress}%`} />
       <input
         type="range"
         min="0"
@@ -30,7 +48,12 @@ const FileUpload = () => {
         }}
         onDrop={(e) => {
           e.preventDefault()
+
           setPromptText("Dropped")
+          if (!mockUpload) {
+            setProgress(0);
+            setMockUpload(true);
+          }
 
           let file = e.dataTransfer.files[0]
           if (file != null) {

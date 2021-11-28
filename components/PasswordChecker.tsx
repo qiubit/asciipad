@@ -23,7 +23,7 @@ const PasswordChecker = () => {
         <p>{user.email}</p>
         <div style={{ color: 'blue' }}>
           { /* eslint-disable */ }
-          <a href="/api/auth/logout?returnTo=http://localhost:3000/playground/textvid">Logout</a>
+          <a href="/api/auth/logout?returnTo=https://asciipad.vercel.app/playground/textvid">Logout</a>
           { /* eslint-enable */ }
         </div>
       </div>

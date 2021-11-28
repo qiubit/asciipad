@@ -9,7 +9,9 @@ const PasswordChecker = () => {
   if (!user) {
     return (
       <div style={{ color: 'blue' }}>
+        { /* eslint-disable */ }
         <a href="/api/auth/login?returnTo=/playground/textvid">Login</a>
+        { /* eslint-enable */ }
       </div>
     )
   }
@@ -20,7 +22,9 @@ const PasswordChecker = () => {
         <h2>Hello, {user.name}!</h2>
         <p>{user.email}</p>
         <div style={{ color: 'blue' }}>
+          { /* eslint-disable */ }
           <a href="/api/auth/logout?returnTo=http://localhost:3000/playground/textvid">Logout</a>
+          { /* eslint-enable */ }
         </div>
       </div>
     )
